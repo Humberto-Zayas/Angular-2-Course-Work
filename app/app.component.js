@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './favorite.component', './courses.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(['angular2/core', './courses.component'], function(exports_1, co
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_component_1;
+    var core_1, favorite_component_1, courses_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (favorite_component_1_1) {
+                favorite_component_1 = favorite_component_1_1;
             },
             function (courses_component_1_1) {
                 courses_component_1 = courses_component_1_1;
@@ -23,12 +26,24 @@ System.register(['angular2/core', './courses.component'], function(exports_1, co
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.title = "Angular App";
+                    this.post = {
+                        title: "Title",
+                        isFavorite: true
+                    };
                 }
+                AppComponent.prototype.onClick = function ($event) {
+                    console.log("clicked", $event);
+                };
+                AppComponent.prototype.onFavoriteChange = function ($event) {
+                    console.log($event);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>My First Angular 2 App</h1><courses></courses>',
-                        directives: [courses_component_1.CoursesComponent]
+                        template: "\n    <button (click)=\"onClick($event)\">Submit</button>\n    <input type=\"text\" [(ngModel)]=\"title\" />\n    <input type=\"button\" (click)=\"title = ''\" value=\"Clear\" />\n    Preview: {{title}}\n    <h1>My First Angular 2 App</h1>\n    <courses></courses>\n    <favorite [isFavorite]=\"post.isFavorite\" (change)=\"onFavoriteChange($event)\"></favorite>\n    ",
+                        //<input type="text" [value]="title" (input)="title = $event.target.value"/>
+                        directives: [courses_component_1.CoursesComponent, favorite_component_1.FavoriteComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
