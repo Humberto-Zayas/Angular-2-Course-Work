@@ -1,0 +1,13 @@
+<div style="width: 20px; text-align: center; color: #999;">
+<i 
+	class="glyphicon glyphicon-menu-up"
+	[class.highlighted]="myVote == 1"
+	(click)="onVoteUp()"> 
+</i>
+<span>{{ voteCount + myVote }}</span>
+<i 
+	class="glyphicon glyphicon-menu-down"
+	[class.highlighted]="myVote == -1"
+	(click)="onVoteDown()"> 
+</i>
+</div>

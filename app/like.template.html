@@ -1,0 +1,14 @@
+<!-- <i 
+	class="glyphicon-heart"
+	[class.glyphicon-heart]="!isFavorite"
+	[class.glyphicon-star]="isFavorite"
+	(click)="onClick()"> 
+
+</i> -->
+
+<i 
+	class="glyphicon glyphicon-heart"
+	[class.highlighted]="iLike"
+	(click)="onClick()"> 
+</i>
+<span>{{ totalLikes }}</span>
